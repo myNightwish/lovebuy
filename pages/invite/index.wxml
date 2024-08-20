@@ -1,0 +1,5 @@
+<!-- pages/invite/invite.wxml -->
+<view class="container">
+  <text>你已被邀请加入家庭: {{familyName}}</text>
+  <van-button type="primary" bindtap="joinFamily">确认加入</van-button>
+</view>

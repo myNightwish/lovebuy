@@ -1,0 +1,97 @@
+<van-tabs active="{{ active }}" bind:change="onTabChange">
+  <van-tab title="采购" name="1">
+    <view class="container">
+        <!-- 添加物品 -->
+        <van-field model:value="{{itemName}}" label="物品名称" placeholder="请输入物品名称" />
+        <van-field model:value="{{itemCount}}" label="件数" placeholder="默认1" type="number" />
+        <van-field model:value="{{itemDescription}}" label="描述" placeholder="请输入描述" />
+        <van-uploader
+          model:value="images"
+          multiple
+          after-read="afterRead"
+          max-count="3"
+          preview-size="100px"
+          delete-text="删除"
+          custom-class="uploader"
+        />
+        <van-button type="primary" block bindtap="addItem">添加物品</van-button>
+        <van-button type="danger" block bindtap="submitItemList">提交列表</van-button>
+        <!-- 物品列表 -->
+        <van-cell-group>
+          <van-card
+            wx:for="{{items}}"
+            wx:key="item._id"
+            price="0"
+            title="{{item.itemName}}"
+            desc="{{item.itemDescription}}"
+            num="{{item.itemCount}}"
+            tag="{{item.purchased ? '已购买' : '未购买'}}"
+            thumb="{{item.images[0] || 'https://img01.yzcdn.cn/vant/ipad.jpeg'}}"
+          >
+            <view slot="footer">
+              <van-button size="mini" type="danger" data-id="{{item._id}}"
+              bindtap="deleteItem">
+              删除</van-button>
+            </view>
+          </van-card>
+        </van-cell-group>
+        <!-- 上拉加载 -->
+        <!-- <van-loading
+          wx:if="{{loading}}"
+          size="24"
+        />
+        <view wx:if="{{!loading && finished}}" class="no-more">
+          没有更多了
+        </view> -->
+    </view>
+  </van-tab>
+  <van-tab title="点菜" name="2">
+    开发中，敬请期待～
+      <van-cell-group>
+        <!-- 菜品名称 -->
+        <!-- <van-field
+          label="菜品名称"
+          placeholder="请输入菜品名称"
+          model:value="{{orderName}}"
+          required
+        /> -->
+        <!-- 备注 -->
+        <!-- <van-field
+          label="备注"
+          placeholder="备注"
+          type="textarea"
+          model:value="{{newOrder.remark}}"
+        /> -->
+        <!-- 照片上传 -->
+        <!-- <van-uploader
+          file-list="{{newOrder.images}}"
+          bind:after-read="onAfterRead"
+        /> -->
+      </van-cell-group>
+      <!-- 提交按钮 -->
+      <!-- <van-button
+        type="primary"
+        bindtap="addOrderToLocalList"
+      >
+        添加到点单
+      </van-button>
+      <van-button
+        type="success"
+        bindtap="submitOrderList"
+      >
+        提交点单
+      </van-button> -->
+      <!-- 显示已添加的点单列表 -->
+      <!-- <view>
+        <block wx:for="{{orders}}" wx:key="id">
+          <van-cell
+            title="{{item.orderName}}"
+            label="{{item.remark}}"
+            value="{{item.quantity}} 份"
+            is-link
+            bindtap="markAsOrdered"
+          />
+        </block>
+      </view> -->
+  </van-tab>
+</van-tabs>

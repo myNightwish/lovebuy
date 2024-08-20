@@ -1,0 +1,11 @@
+<!-- pages/family/family.wxml -->
+<view class="container">
+  <van-field
+  model:value="{{ familyName }}"
+  label="家庭名称" placeholder="请输入家庭名称" />
+  <van-button type="primary" bindtap="createFamily">创建家庭</van-button>
+  <view wx:if="{{inviteLink}}">
+    <van-field value="{{inviteLink}}" label="邀请链接" />
+    <van-button open-type="share" type="primary">分享给微信好友</van-button>
+  </view>
+</view>

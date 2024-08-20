@@ -1,0 +1,21 @@
+.container {
+  padding: 16px;
+}
+
+.uploader {
+  margin-top: 16px;
+}
+
+.image-preview {
+  width: 100px;
+  height: 100px;
+  margin-right: 8px;
+}
+
+.item {
+  margin-bottom: 16px;
+}
+
+.submit-button {
+  margin-top: 16px;
+}

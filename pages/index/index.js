@@ -1,49 +1,48 @@
-// index.js
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
-    },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
+    isLoggedIn: false,
+    userInfo: {}
   },
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+
+  onLoad: function() {
+    this.checkLoginStatus();
   },
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail
-    const { nickName } = this.data.userInfo
-    this.setData({
-      "userInfo.avatarUrl": avatarUrl,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
-  },
-  onInputChange(e) {
-    const nickName = e.detail.value
-    const { avatarUrl } = this.data.userInfo
-    this.setData({
-      "userInfo.nickName": nickName,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+
+  handleLogin: function() {
+    wx.cloud.callFunction({
+      name: 'loginin',
+      data: {},
+      success: response => {
+        console.log('response.result.success',response.result)
+        if (response.result.success) {
+          wx.setStorageSync('user', response.result.user);
+          this.setData({
+            isLoggedIn: true,
+            userInfo: response.result.user
+          });
+          wx.showToast({ title: '登录成功' });
+        } else {
+          wx.showToast({ title: '登录失败', icon: 'none' });
+        }
+      },
+      fail: () => {
+        wx.showToast({ title: '登录失败', icon: 'none' })
       }
     })
   },
-})
+
+  navigateTo: function(event) {
+    const page = event.currentTarget.dataset.page;
+    wx.navigateTo({ url: `/pages/${page}/index` });
+  },
+
+  checkLoginStatus: function() {
+    const user = wx.getStorageSync('user');
+    if (user) {
+      this.setData({
+        isLoggedIn: true,
+        userInfo: user
+      });
+    }
+  }
+});

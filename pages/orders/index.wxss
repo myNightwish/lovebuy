@@ -1,0 +1,84 @@
+/* styles.wxss */
+.order {
+  display: flex;
+  height: 100vh;
+}
+
+.category {
+  width: 20%;
+  border-right: 1px solid #ddd;
+  background-color: #f5f5f5;
+}
+
+.category-name {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.category-name.active {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.content {
+  width: 80%;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.content-item {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.image-url {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.image-url image {
+  width: 100%;
+  height: 100%;
+}
+
+.desc {
+  flex: 1;
+}
+
+.goods-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.goods-slogan {
+  color: #888;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 20px;
+}
+.btn-wrapper {
+  position: fixed;
+  bottom: 30rpx;
+  right: 0;
+}
+

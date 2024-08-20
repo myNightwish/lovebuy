@@ -1,0 +1,37 @@
+<view class="order">
+  <!-- 左侧导航栏 -->
+  <view class="category">
+    <view
+      wx:for="{{goods}}"
+      wx:key="key"
+      class="category-name {{currentKey === index ? 'active' : ''}}"
+      data-key="{{index}}"
+      bindtap="changeCategory"
+    >
+      {{item}}
+    </view>
+  </view>
+  <!-- 右侧内容区域 -->
+  <view class="content" scroll-y="true" bindscroll="handleScroll">
+    <view
+      wx:for="{{buyInfos}}"
+      wx:key="key"
+      class="content-item"
+    >
+      <view class="title">{{item.itemName}}</view>
+        <view class="image-url">
+          <image src="{{item.images[0]}}" />
+        </view>
+        <view class="desc">
+          <view class="goods-name">{{item.itemDescription}}</view>
+          <view class="goods-slogan">{{item.goodsSlogan}}</view>
+          <view class="bottom">
+            <view>{{item.itemCount}}</view>
+            <view data-id="{{item._id}}" bindtap="increaseCount">➕</view>
+            <view data-id="{{item._id}}" bindtap="decreaseCount">➖</view>
+          </view>
+        </view>
+    </view>
+    <van-button type="primary" bindtap="submitOrder" class="btn-wrapper">确认修改</van-button>
+  </view>
+</view>

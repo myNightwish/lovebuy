@@ -1,27 +1,9 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
-    </view>
+<view class="container">
+  <van-button type="primary" bindtap="handleLogin" wx:if="{{!isLoggedIn}}">微信授权登录</van-button>
+  <view wx:elif="{{isLoggedIn}}">
+    <text>欢迎，{{userInfo.nickName}}</text>
+    <van-button type="primary" bindtap="navigateTo" data-page="family">家庭管理</van-button>
+    <van-button type="primary" bindtap="navigateTo" data-page="items">物品管理</van-button>
+    <van-button type="primary" bindtap="navigateTo" data-page="orders">点单</van-button>
   </view>
-</scroll-view>
+</view>
