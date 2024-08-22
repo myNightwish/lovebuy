@@ -7,4 +7,11 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+  color: #515151;
+   overflow-y: scroll; /* 确保内容可以滚动 */
 } 
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* 隐藏滚动条背景 */
+}

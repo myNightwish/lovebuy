@@ -4,21 +4,47 @@
         "pages/orders/index",
         "pages/items/index",
         "pages/family/index",
-        "pages/invite/index"
+        "pages/invite/index",
+        "custom-tab-bar/index"
     ],
     "window": {
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "Weixin",
-        "navigationBarBackgroundColor": "#FF6347"
+        "navigationBarBackgroundColor": "#9575CD"
     },
     "componentFramework": "glass-easel",
     "sitemapLocation": "sitemap.json",
     "lazyCodeLoading": "requiredComponents",
-    "entryPagePath": "pages/family/index",
+    "entryPagePath": "pages/orders/index",
     "usingComponents": {
         "van-icon": "@vant/weapp/icon/index",
         "van-button": "@vant/weapp/button/index",
         "van-field": "/miniprogram_npm/@vant/weapp/field",
         "van-cell": "/miniprogram_npm/@vant/weapp/cell"
+    },
+    "tabBar": {
+      "color": "#515151",
+      "selectedColor": "#9575CD",
+      "backgroundColor": "#ffffff",
+        "list": [
+          {
+            "pagePath": "pages/orders/index",
+            "text": "首页",
+            "iconPath": "assets/home.png",
+            "selectedIconPath": "assets/home_active.png"
+          },
+          {
+            "pagePath": "pages/items/index",
+            "text": "上传",
+            "iconPath": "assets/search.png",
+            "selectedIconPath": "assets/search_active.png"
+          },
+          {
+            "pagePath": "pages/family/index",
+            "text": "我的",
+            "iconPath": "assets/users.png",
+            "selectedIconPath": "assets/users_active.png"
+          }
+        ]
     }
 }

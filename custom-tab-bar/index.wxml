@@ -1,0 +1,16 @@
+<!-- <view class="tab-bar">
+  <block wx:for="{{list}}" wx:key="id">
+    <view class="tab-bar-item" data-path="{{item.pagePath}}" data-id="{{item.id}}" catchtap="switchTab">
+      <image src="{{selected === item.id ? item.selectedIconPath : item.iconPath}}" class="tab-bar-icon" />
+      <text class="tab-bar-text" style="color: {{selected === item.id ? selectedColor : color}}">{{item.text}}</text>
+    </view>
+  </block>
+</view> -->
+
+<view class="tab-bar">
+  <view class="tab-bar-border"></view>
+  <view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <image class="tab-bar-icon" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+    <view class="tab-bar-text" style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</view>
+  </view>
+</view>

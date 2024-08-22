@@ -1,0 +1,19 @@
+<view
+  wx:for="{{buyInfos}}"
+  wx:key="item._id"
+  class="content-item"
+>
+    <view class="image-url">
+      <image src="{{item.images[0].url}}" />
+    </view>
+    <view class="desc">
+        <view class="title">{{item.itemName}}</view>
+        <view class="goods-name">备注：{{item.itemDescription || '暂无'}}</view>
+    </view>
+    <view class="operate-count">
+        <view data-id="{{item._id}}" bindtap="decreaseCount">➖</view>
+        <div data-id="{{item._id}}" class="num-btn">{{item.itemCount}}</div>
+        <view data-id="{{item._id}}" bindtap="increaseCount">➕</view>
+        <div wx:if="{{showDelete}}" class="dele-btn-slot" data-id="{{item._id}}" bindtap="deleteItem">删除</div>
+    </view>
+</view>

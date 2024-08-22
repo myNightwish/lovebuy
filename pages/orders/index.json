@@ -4,6 +4,7 @@
       "van-cell": "/miniprogram_npm/@vant/weapp/cell",
       "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group",
       "van-uploader": "/miniprogram_npm/@vant/weapp/uploader",
-      "van-card": "/miniprogram_npm/@vant/weapp/card"
+      "van-card": "/miniprogram_npm/@vant/weapp/card",
+      "product-item": "/components/productItem/index"
     }
 }

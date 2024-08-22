@@ -13,25 +13,8 @@
   </view>
   <!-- 右侧内容区域 -->
   <view class="content" scroll-y="true" bindscroll="handleScroll">
-    <view
-      wx:for="{{buyInfos}}"
-      wx:key="key"
-      class="content-item"
-    >
-      <view class="title">{{item.itemName}}</view>
-        <view class="image-url">
-          <image src="{{item.images[0]}}" />
-        </view>
-        <view class="desc">
-          <view class="goods-name">{{item.itemDescription}}</view>
-          <view class="goods-slogan">{{item.goodsSlogan}}</view>
-          <view class="bottom">
-            <view>{{item.itemCount}}</view>
-            <view data-id="{{item._id}}" bindtap="increaseCount">➕</view>
-            <view data-id="{{item._id}}" bindtap="decreaseCount">➖</view>
-          </view>
-        </view>
-    </view>
+    <product-item buyInfos="{{buyInfos}}" bind:update="handleUpdate">
+    </product-item>
     <van-button type="primary" bindtap="submitOrder" class="btn-wrapper">确认修改</van-button>
   </view>
 </view>
